@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'tailwindcss';
+@import "tailwindcss";
+/* PRIVATE */
+@import "./app/assets/styles/dashboard.scss";
+@import "./app/assets/styles/button.scss";
+@import "./app/assets/styles/navigation.scss";
+@import "./app/assets/styles/thumbnail.scss";
+/* PUBLIC */
+
+/* COMMON */
+@import "./app/assets/styles/fonts.scss";
+@import "./app/assets/styles/modal.scss";

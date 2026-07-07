@@ -1,0 +1,40 @@
+<header>
+    <div class="logo">
+        Tournament Dashboard
+    </div>
+    <div>
+        <button class="button -error">
+            Disconnect
+        </button>
+    </div>
+</header>
+<main>
+    <nav>
+        <ul>
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+            <li>
+                <a href="#">...</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-container">
+        @if(!showOneTournament){
+            <h1>Tournament List</h1>
+            <app-tournament-listing (tournamentSelectedId)="onTournamentSelected($event)"></app-tournament-listing>
+
+        }@else {
+            <app-tournament [tournamentId]="selectedTournamentId" (goBackToListing)="backToListing()"></app-tournament>
+
+        }
+
+    </div>
+    
+</main>
+<footer>
+    Lorem ipsum
+</footer>

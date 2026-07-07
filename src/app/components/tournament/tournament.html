@@ -1,0 +1,64 @@
+<div class="tournament">
+    <div class="tournament-header">
+        <h1>{{tournament()?.name}}</h1>
+        <button (click)="goBack()" class="button -primary">
+            Go back
+        </button>
+    </div>
+    <div class="tournament-body">
+        <div class="tournament-navbar">
+            <button (click)="showPreview()">
+                Preview
+            </button>
+            <button (click)="showUpdate()">
+                Update
+            </button>
+            <button (click)="showSettings()">
+                Settings
+            </button>
+        </div>
+        @if (showPreviewWindow) {
+            <div class="tournament-preview">
+                @for(nation of tournament()?.nations; track nation.id){
+                    <div class="tournament-preview__nation">
+                        {{nation.name}}
+                    </div>
+                    @for(team of nation.teams; track team.id){
+                        <div class="tournament-preview__team">
+                            <div class="tournament-preview__team-name">
+                                {{team.name}}
+                            </div>
+                            <div class="tournament-preview__team-score">
+                                {{team.total_points}}
+                            </div>
+                        </div>
+                    }
+                    <div class="tournament-preview__score">
+                        {{nation.total_points}}
+                    </div>
+                }
+            </div>
+        }
+        @if (showUpdateWindow) {
+            <div class="tournament-update">
+                <div class="tournament-update__nation">
+                    @for(nation of tournament()?.nations; track nation.id){
+                        <div class="">
+                            {{nation.name}}
+                        </div>
+                        <div>
+                            {{nation.total_points}}
+                        </div>
+                    }
+                </div>
+                
+            </div>
+        }
+        @if (showSettingsWindow) {
+            <div class="tournament-settings">
+                settings
+            </div>
+        }
+        
+    </div>
+</div>

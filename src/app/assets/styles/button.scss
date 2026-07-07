@@ -1,0 +1,25 @@
+.button{
+    @apply
+    rounded-full
+    px-4
+    py-2
+    cursor-pointer
+    text-neutral-50;
+
+    &.-small{
+        @apply
+        px-2
+        py-1;
+    }
+
+    &.-primary{
+        @apply
+        bg-blue-500;
+    }
+    &.-success{}
+    &.-warning{}
+    &.-error{
+        @apply
+        bg-red-500;
+    }
+}

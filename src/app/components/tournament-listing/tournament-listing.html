@@ -1,0 +1,31 @@
+<div class="tournament-thumbnail-container">
+    @for(tournament of tournamentsList(); track tournament.id){
+        <div class="tournament-thumbnail-wrapper">
+            <button (click)="goToTournament(tournament.id)" class="tournament-thumbnail">
+                {{tournament.name}}    
+            </button>
+            <span class="thumbnail-delete">
+                <button (click)="deleteTournament(tournament.id)" class="button -error -small">
+                    Delete
+                </button>
+            </span>
+        </div>
+    }
+    <button (click)="toggleCreationModal(true)" class="new-tournament-thumbnail">
+        Add Tournament
+    </button>
+</div>
+@if (showCreationModal) {
+    <div class="modal creation-modal" >
+        <button (click)="toggleCreationModal(false)">
+            X
+        </button>
+        <form [formGroup]="tournamentCreationForm" (ngSubmit)="addTournament()">
+            <label for="name">Tournament name: </label>
+            <input id="name" type="text" formControlName="name" required/>
+            <button type="submit" [disabled]="!tournamentCreationForm.valid" class="button -primary -small">Submit</button>
+        </form>
+    </div>
+}
+
+
