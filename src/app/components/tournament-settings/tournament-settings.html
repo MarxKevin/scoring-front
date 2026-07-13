@@ -1,0 +1,45 @@
+<div class="tournament-settings">
+    <h2>Configuration des maps</h2>
+
+    <form 
+    [formGroup]="mapsCreationForm"
+    (ngSubmit)="updateMapsList()">
+
+        <div formArrayName="maps">
+
+            @for(map of mapsFormArray.controls; track $index) {
+
+            <div [formGroupName]="$index">
+
+                <input 
+                type="text"
+                formControlName="name">
+
+                <button 
+                type="button"
+                (click)="removeMap($index)">
+                X
+                </button>
+
+            </div>
+
+            }
+
+        </div>
+
+
+        <button 
+            type="button"
+            (click)="addMap()">
+            Ajouter une map
+        </button>
+
+
+        <button 
+            type="submit">
+            Sauvegarder
+        </button>
+
+    </form>
+
+</div>

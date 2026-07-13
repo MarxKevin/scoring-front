@@ -1,10 +1,11 @@
 import { Component, computed, inject, input, output } from '@angular/core';
 import { TournamentService } from '../../services/tournament';
 import { TournamentModel } from '../../models/tournament-model';
+import { TournamentSettings } from '../tournament-settings/tournament-settings';
 
 @Component({
   selector: 'app-tournament',
-  imports: [],
+  imports: [TournamentSettings],
   templateUrl: './tournament.html',
   styleUrl: './tournament.css',
 })
@@ -16,7 +17,6 @@ export class Tournament {
 
   tournament = computed<TournamentModel | undefined >(() => {
     if (this.tournamentId() > 0 && this.tournamentService.getOneTournament(this.tournamentId()) !== undefined){
-      console.table(this.tournamentService.getOneTournament(this.tournamentId()))
       return this.tournamentService.getOneTournament(this.tournamentId())
     }else{
       return

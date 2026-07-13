@@ -26,3 +26,8 @@ export interface TournamentModel {
   name?: string | null;
   nations?: Nation[];
 }
+
+export interface MapModel {
+  id: number;
+  name: string;
+}
