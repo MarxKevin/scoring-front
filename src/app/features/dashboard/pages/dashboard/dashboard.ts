@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TournamentListing } from '../../../components/tournament-listing/tournament-listing';
-import { Tournament } from '../../../components/tournament/tournament';
+import { TournamentListing } from '../../components/tournament-listing/tournament-listing';
+import { Tournament } from '../../components/tournament/tournament';
 
 @Component({
   selector: 'app-dashboard',

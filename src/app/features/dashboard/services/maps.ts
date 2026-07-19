@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { MapModel } from '../models/tournament-model';
+import { MapModel } from '../models/map-model';
 
 @Injectable({
   providedIn: 'root'

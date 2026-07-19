@@ -1,0 +1,10 @@
+<div class="main-container">
+    @if(!showOneTournament){
+        <h1>Tournament List</h1>
+        <app-tournament-listing (tournamentSelectedId)="onTournamentSelected($event)"></app-tournament-listing>
+
+    }@else {
+         <app-tournament [tournamentId]="selectedTournamentId" (goBackToListing)="backToListing()"></app-tournament>
+
+    }
+</div>
