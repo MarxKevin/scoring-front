@@ -1,0 +1,10 @@
+/* visual identity */
+
+:root{
+    --primary: blue;
+    --secondary: purple;
+    --success: green;
+    --warning: orange;
+    --danger: red;
+
+}

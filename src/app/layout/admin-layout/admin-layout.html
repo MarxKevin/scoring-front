@@ -1,5 +1,5 @@
-<header>
-    <div class="logo">
+<header class="bg-indigo-900 text-neutral-50 px-8 py-4 flex justify-between">
+    <div class="flex flex-wrap content-center">
         Tournament Dashboard
     </div>
     <div>
@@ -9,22 +9,24 @@
     </div>
 </header>
 
-<aside>
-	<nav>
-        <ul>
-            <li>
-                <a href="/dashboard">Dashboard</a>
-            </li>
-            <li>
-                <a href="#">Users</a>
-            </li>
-            <li>
-                <a href="#">...</a>
-            </li>
-        </ul>
-    </nav>
-</aside>
+<div class="flex min-h-screen">
+    <aside class="p-8 bg-neutral-200">
+        <nav>
+            <ul>
+                <li>
+                    <a href="/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Users</a>
+                </li>
+                <li>
+                    <a href="#">...</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
-<main>
-  <router-outlet />
-</main>
+    <main class="flex-2 p-8">
+        <router-outlet />
+    </main>
+</div>

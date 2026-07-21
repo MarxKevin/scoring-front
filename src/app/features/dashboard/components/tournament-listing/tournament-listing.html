@@ -1,4 +1,17 @@
-<div class="tournament-thumbnail-container">
+<div class="flex justify-between ">
+    <h1>Tournament List</h1>
+    <div>
+        <app-button
+            variant="primary"
+            (clicked)="toggleCreationModal(true)">
+                Add
+        </app-button>
+    </div>
+    
+</div>
+
+
+<div class="">
     @for(tournament of tournamentsList(); track tournament.id){
         <div class="tournament-thumbnail-wrapper">
             <button (click)="goToTournament(tournament.id)" class="tournament-thumbnail">
@@ -11,9 +24,7 @@
             </span>
         </div>
     }
-    <button (click)="toggleCreationModal(true)" class="new-tournament-thumbnail">
-        Add Tournament
-    </button>
+
 </div>
 @if (showCreationModal) {
     <div class="modal creation-modal" >

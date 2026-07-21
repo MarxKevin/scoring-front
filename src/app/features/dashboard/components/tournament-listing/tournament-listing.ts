@@ -2,10 +2,11 @@ import { Component, inject, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TournamentModel } from '../../models/tournament-model';
 import { TournamentService } from '../../services/tournament';
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'app-tournament-listing',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, Button],
   templateUrl: './tournament-listing.html',
   styleUrl: './tournament-listing.css',
 })

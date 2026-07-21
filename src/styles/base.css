@@ -1,0 +1,16 @@
+/* Base CSS -> only HTML element*/
+
+html{
+
+}
+
+body{
+
+}
+
+h1{
+    @apply
+    text-3xl
+    font-semibold
+    mb-8;
+}

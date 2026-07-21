@@ -1,0 +1,52 @@
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+
+export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+
+@Component({
+  selector: 'app-button',
+  imports: [],
+  templateUrl: './button.html',
+  styleUrl: './button.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class Button {
+
+  variant = input<ButtonVariant>('primary');
+
+  disabled = input(false);;
+
+  clicked = output<void>();
+
+  classes = computed(() => {
+
+    const base =
+      'inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition';
+
+    const variants = {
+      primary:
+        'bg-indigo-600 text-white hover:bg-indigo-700',
+
+      secondary:
+        'bg-gray-200 text-gray-900 hover:bg-gray-300',
+
+      success:
+        'bg-green-500 text-gray-900 hover:bg-green-200',
+
+      warning:
+        'bg-orange-300 text-gray-900 hover:bg-orange-200',
+
+      danger:
+        'bg-red-600 text-white hover:bg-red-700'
+    };
+
+
+    return `${base} ${variants[this.variant()]}`;
+  });
+
+  onClick() {
+    if (!this.disabled()) {
+      this.clicked.emit();
+    }
+  }
+  
+}
