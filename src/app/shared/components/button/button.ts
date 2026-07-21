@@ -1,19 +1,29 @@
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { LucideAngularModule, X, Check } from 'lucide-angular';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+const ICONS = { cross: X, check: Check}
 
 @Component({
   selector: 'app-button',
-  imports: [],
+  imports: [LucideAngularModule],
   templateUrl: './button.html',
   styleUrl: './button.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Button {
 
+  icon = input<keyof typeof ICONS>();
+
+  iconOnly = input(false, {
+      transform: booleanAttribute
+  });
+
   variant = input<ButtonVariant>('primary');
 
-  disabled = input(false);;
+  disabled = input(false, {
+      transform: booleanAttribute
+  });
 
   clicked = output<void>();
 
@@ -39,9 +49,13 @@ export class Button {
         'bg-red-600 text-white hover:bg-red-700'
     };
 
-
     return `${base} ${variants[this.variant()]}`;
   });
+
+  iconVariant = computed(() => {
+    const name = this.icon();
+    return name ? ICONS[name] : undefined;
+  })
 
   onClick() {
     if (!this.disabled()) {

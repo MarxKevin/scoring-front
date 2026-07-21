@@ -3,6 +3,11 @@
     [disabled]="disabled()"
     (click)="onClick()">
 
+    <span [class.mr-[8px]]="!iconOnly()">
+        <lucide-icon [img]="iconVariant()" size="16"></lucide-icon>
+    </span>
+    
+
     <ng-content />
 
 </button>

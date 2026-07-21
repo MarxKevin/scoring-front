@@ -2,6 +2,7 @@
     <h1>Tournament List</h1>
     <div>
         <app-button
+            icon="check"
             variant="primary"
             (clicked)="toggleCreationModal(true)">
                 Add
@@ -27,6 +28,7 @@
 
 </div>
 @if (showCreationModal) {
+    <app-modal></app-modal>
     <div class="modal creation-modal" >
         <button (click)="toggleCreationModal(false)">
             X

@@ -3,10 +3,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TournamentModel } from '../../models/tournament-model';
 import { TournamentService } from '../../services/tournament';
 import { Button } from '../../../../shared/components/button/button';
+import { Modal } from '../../../../shared/components/modal/modal';
 
 @Component({
   selector: 'app-tournament-listing',
-  imports: [ReactiveFormsModule, Button],
+  imports: [ReactiveFormsModule, Button, Modal],
   templateUrl: './tournament-listing.html',
   styleUrl: './tournament-listing.css',
 })
