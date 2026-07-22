@@ -9,7 +9,7 @@ export const ADMIN_ROUTES: Routes = [
     {
         path: 'dashboard',
         loadChildren: () =>
-            import('../dashboard/routes')
+            import('../tournaments/routes')
             .then(m => m.DASHBOARD_ROUTES)
     }
 
