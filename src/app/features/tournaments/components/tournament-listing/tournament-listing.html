@@ -28,16 +28,19 @@
 
 </div>
 @if (showCreationModal) {
-    <app-modal></app-modal>
-    <div class="modal creation-modal" >
-        <button (click)="toggleCreationModal(false)">
-            X
-        </button>
+    <app-modal>
         <form [formGroup]="tournamentCreationForm" (ngSubmit)="addTournament()">
             <label for="name">Tournament name: </label>
             <input id="name" type="text" formControlName="name" required/>
             <button type="submit" [disabled]="!tournamentCreationForm.valid" class="button -primary -small">Submit</button>
         </form>
+
+    </app-modal>
+    <div class="modal creation-modal" >
+        <button (click)="toggleCreationModal(false)">
+            X
+        </button>
+        
     </div>
 }
 

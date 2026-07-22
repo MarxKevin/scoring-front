@@ -3,12 +3,12 @@ import { TournamentListing } from '../../components/tournament-listing/tournamen
 import { Tournament } from '../../components/tournament/tournament';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-tournaments',
   imports: [TournamentListing, Tournament],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  templateUrl: './tournaments.html',
+  styleUrl: './tournaments.css',
 })
-export class Dashboard {
+export class Tournaments {
 
   selectedTournamentId = 0;
   showOneTournament:boolean = false;
