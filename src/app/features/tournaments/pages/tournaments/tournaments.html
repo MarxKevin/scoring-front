@@ -1,7 +1,0 @@
-@if(!showOneTournament){
-    <app-tournament-listing (tournamentSelectedId)="onTournamentSelected($event)"></app-tournament-listing>
-
-}@else {
-    <app-tournament [tournamentId]="selectedTournamentId" (goBackToListing)="backToListing()"></app-tournament>
-
-}

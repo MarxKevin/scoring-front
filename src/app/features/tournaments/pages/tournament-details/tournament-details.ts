@@ -1,15 +1,14 @@
 import { Component, computed, inject, input, output } from '@angular/core';
 import { TournamentService } from '../../services/tournament';
 import { TournamentModel } from '../../models/tournament-model';
-import { TournamentSettings } from '../tournament-settings/tournament-settings';
 
 @Component({
-  selector: 'app-tournament',
-  imports: [TournamentSettings],
-  templateUrl: './tournament.html',
-  styleUrl: './tournament.css',
+  selector: 'app-tournament-details',
+  imports: [],
+  templateUrl: './tournament-details.html',
+  styleUrl: './tournament-details.css',
 })
-export class Tournament {
+export class TournamentDetails {
 
   tournamentId = input.required<number>();
 

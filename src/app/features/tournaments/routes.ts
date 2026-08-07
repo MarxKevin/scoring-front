@@ -9,8 +9,8 @@ export const DASHBOARD_ROUTES: Routes = [
     {
         path: 'tournaments',
         loadComponent: () =>
-            import('./pages/tournaments/tournaments')
-            .then(c => c.Tournaments)
+            import('./pages/tournament-listing/tournament-listing')
+            .then(c => c.TournamentListing)
     }
 
 ];
