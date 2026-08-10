@@ -102,17 +102,23 @@ export class TournamentService {
             }
           ]
         } 
-      ]
+      ],
+      startDate: new Date("2026-08-09 10:00:00"),
+      endDate: new Date("2026-08-09 23:00:00")
     },
     {
       id: 2,
       name: "Tournament Avril 2025",
-      nations: []
+      nations: [],
+      startDate: new Date("2026-10-10 10:00:00"),
+      endDate: new Date("2026-10-10 23:00:00")
     },
     {
       id: 3,
       name: "Tournament Octobre 2025",
-      nations: []
+      nations: [],
+      startDate: new Date("2025-10-10 10:00:00"),
+      endDate: new Date("2025-10-10 23:00:00")
     },
   ];
 

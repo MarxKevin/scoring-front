@@ -4,4 +4,6 @@ export interface TournamentModel {
   id: number;
   name?: string | null;
   nations?: Nation[];
+  startDate: Date;
+  endDate: Date;
 }

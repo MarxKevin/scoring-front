@@ -4,10 +4,28 @@ import { TournamentModel } from '../../models/tournament-model';
 import { TournamentService } from '../../services/tournament';
 import { Button } from '../../../../shared/components/button/button';
 import { Modal } from '../../../../shared/components/modal/modal';
+import { Tag } from '../../../../shared/components/tag/tag';
+import { getCompetitionStatus } from '../../utils/tournament-status/tournament-status';
+
+
+type TournamentStatus = 'upcoming' | 'ongoing' | 'archived';
+type TagVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+
+const COMPETITION_STATUS_VARIANT: Record<TournamentStatus, TagVariant> = {
+  ongoing: 'success',
+  upcoming: 'warning',
+  archived: 'secondary'
+};
+
+const COMPETITION_STATUS_LABEL: Record<TournamentStatus, string> = {
+  ongoing: 'En cours',
+  upcoming: 'Prochain',
+  archived: 'Archive'
+};
 
 @Component({
   selector: 'app-tournament-listing',
-  imports: [ReactiveFormsModule, Button, Modal],
+  imports: [ReactiveFormsModule, Button, Modal, Tag],
   templateUrl: './tournament-listing.html',
   styleUrl: './tournament-listing.css',
 })
@@ -66,4 +84,19 @@ export class TournamentListing {
   goToTournament(id:number){
     this.tournamentSelectedId.emit(id)
   }
+
+
+  getStatus(tournament: TournamentModel): TournamentStatus {
+    return getCompetitionStatus(tournament);
+  }
+
+  getStatusVariant(status: TournamentStatus): TagVariant {
+    return COMPETITION_STATUS_VARIANT[status];
+  }
+
+  getStatusLabel(status: TournamentStatus): string {
+    return COMPETITION_STATUS_LABEL[status];
+  }
+
+
 }

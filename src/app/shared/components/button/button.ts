@@ -1,8 +1,8 @@
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
-import { LucideAngularModule, X, Check } from 'lucide-angular';
+import { LucideAngularModule, X, Check, Plus } from 'lucide-angular';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-const ICONS = { cross: X, check: Check}
+const ICONS = { cross: X, check: Check, plus: Plus}
 
 @Component({
   selector: 'app-button',

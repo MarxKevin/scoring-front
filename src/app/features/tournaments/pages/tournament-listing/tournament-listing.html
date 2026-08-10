@@ -2,7 +2,7 @@
     <h1>Tournament List</h1>
     <div>
         <app-button
-            icon="check"
+            icon="plus"
             variant="primary"
             (clicked)="toggleCreationModal(true)">
                 Add
@@ -18,6 +18,12 @@
             <button (click)="goToTournament(tournament.id)" class="tournament-thumbnail">
                 {{tournament.name}}    
             </button>
+
+            @let status = getStatus(tournament);
+
+            <app-tag [variant]="getStatusVariant(status)">
+                {{ getStatusLabel(status) }}
+            </app-tag>
             <span class="thumbnail-delete">
                 <button (click)="deleteTournament(tournament.id)" class="button -error -small">
                     Delete
