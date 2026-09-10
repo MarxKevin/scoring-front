@@ -1,8 +1,8 @@
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
-import { LucideAngularModule, X, Check, Plus } from 'lucide-angular';
+import { LucideAngularModule, X, Check, Plus, Trash2 } from 'lucide-angular';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-const ICONS = { cross: X, check: Check, plus: Plus}
+export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'close';
+const ICONS = { cross: X, check: Check, plus: Plus, trash: Trash2}
 
 @Component({
   selector: 'app-button',
@@ -30,23 +30,26 @@ export class Button {
   classes = computed(() => {
 
     const base =
-      'inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition';
+      'inline-flex items-center justify-center font-medium transition';
 
     const variants = {
       primary:
-        'bg-indigo-600 text-white hover:bg-indigo-700',
+        'bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700',
 
       secondary:
-        'bg-gray-200 text-gray-900 hover:bg-gray-300',
+        'bg-gray-200 text-gray-900 rounded-md px-4 py-2 hover:bg-gray-300',
 
       success:
-        'bg-green-500 text-gray-900 hover:bg-green-200',
+        'bg-green-500 text-gray-900 rounded-md px-4 py-2 hover:bg-green-200',
 
       warning:
-        'bg-orange-300 text-gray-900 hover:bg-orange-200',
+        'bg-orange-300 text-gray-900 rounded-md px-4 py-2 hover:bg-orange-200',
 
       danger:
-        'bg-red-600 text-white hover:bg-red-700'
+        'bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-700',
+      
+      close:
+        'bg-transparent text-grey-400 p-2 rounded-full hover:bg-gray-100'
     };
 
     return `${base} ${variants[this.variant()]}`;

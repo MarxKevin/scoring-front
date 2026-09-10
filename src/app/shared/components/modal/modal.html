@@ -1,18 +1,35 @@
-<div class="fixed inset-0 bg-black/70 flex items-center justify-center">
+@if (open()) {
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+    (click)="close()"
+  >
+    <section
+      class="flex max-h-[calc(100vh-2rem)] w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-xl"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="title()"
+      (click)="$event.stopPropagation()"
+    >
+      <!-- Header -->
+      <header
+        class="flex items-center justify-between border-b border-gray-200 px-6 py-4"
+      >
+        <h2 class="text-xl font-semibold text-gray-900">
+          {{ title() }}
+        </h2>
 
-    <div class="w-[900px] h-[600px] bg-white rounded-lg flex flex-col">
+        <app-button
+                icon="cross"
+                variant="close"
+                iconOnly
+                (clicked)="close()"></app-button>
 
-        <div class="h-16 border-b">
-            Titre
-        </div>
-        <app-button icon="cross" iconOnly=""></app-button>
+      </header>
 
-        <div class="flex-1 flex items-center justify-center">
-            <div>
-                <ng-content/>
-            </div>
-
-        </div>
-    </div>
-
-</div>
+      <!-- Content -->
+      <div class="overflow-y-auto p-6">
+        <ng-content />
+      </div>
+    </section>
+  </div>
+}

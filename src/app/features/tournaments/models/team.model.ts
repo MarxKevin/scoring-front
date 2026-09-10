@@ -1,4 +1,4 @@
-import { Match } from "./match-model"
+import { Match } from "./match.model"
 
 export interface Team {
   id?: number;

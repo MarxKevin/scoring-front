@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TournamentModel } from '../models/tournament-model';
+import { TournamentModel } from '../models/tournament.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ export class TournamentService {
     private tournaments: Array<TournamentModel> = [
     {
       id: 1,
-      name: "Tournament Février 2025",
+      name: "Tournament Février 2027",
       nations: [
         {
           id: 1,
@@ -103,22 +103,19 @@ export class TournamentService {
           ]
         } 
       ],
-      startDate: new Date("2026-08-09 10:00:00"),
-      endDate: new Date("2026-08-09 23:00:00")
+      status: "upcoming"
     },
     {
       id: 2,
-      name: "Tournament Avril 2025",
+      name: "Tournament Avril 2026",
       nations: [],
-      startDate: new Date("2026-10-10 10:00:00"),
-      endDate: new Date("2026-10-10 23:00:00")
+      status: "ongoing"
     },
     {
       id: 3,
       name: "Tournament Octobre 2025",
       nations: [],
-      startDate: new Date("2025-10-10 10:00:00"),
-      endDate: new Date("2025-10-10 23:00:00")
+      status: "archived"
     },
   ];
 
@@ -130,7 +127,7 @@ export class TournamentService {
     return this.tournaments.filter((tournament) => tournament.id === id)[0]
   }
 
-  addTournament(item: TournamentModel): void {
+  createTournament(item: TournamentModel): void {
     this.tournaments.push(item);
   }
 

@@ -1,24 +1,32 @@
-import { TournamentModel } from "../../models/tournament-model";
+import { TournamentStatus } from '../../models/tournament-status.model';
+import { TagVariant } from '../../../../shared/components/tag/tag';
 
-
-export type CompetitionStatus =
-  | 'ongoing'
-  | 'upcoming'
-  | 'archived';
-
-  type TagVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-
-export function getCompetitionStatus(tournament: TournamentModel): CompetitionStatus {
-
-  const now = new Date();
-
-  if (now < tournament.startDate) {
-    return 'upcoming';
-  }
-
-  if (now > tournament.endDate) {
-    return 'archived';
-  }
-
-  return 'ongoing';
+export interface TournamentStatusConfig {
+  label: string;
+  variant: TagVariant;
 }
+
+export const TOURNAMENT_STATUS_CONFIG: Record<
+  TournamentStatus,
+  TournamentStatusConfig
+> = {
+  draft: {
+    label: 'Brouillon',
+    variant: 'secondary',
+  },
+
+  upcoming: {
+    label: 'Prochain',
+    variant: 'warning',
+  },
+
+  ongoing: {
+    label: 'En cours',
+    variant: 'success',
+  },
+
+  archived: {
+    label: 'Archivé',
+    variant: 'secondary',
+  },
+};

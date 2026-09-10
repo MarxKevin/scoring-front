@@ -1,6 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { MapsService } from '../../services/maps';
-import { MapModel } from '../../models/map-model';
+import { MapModel } from '../../models/map.model';
 import { FormArray, FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 type MapForm = FormGroup<{

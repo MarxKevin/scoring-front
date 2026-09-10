@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Button } from '../button/button'
 
 @Component({
@@ -7,4 +7,13 @@ import { Button } from '../button/button'
   templateUrl: './modal.html',
   styleUrl: './modal.css',
 })
-export class Modal {}
+export class Modal {
+  readonly open = input(false);
+  readonly title = input('');
+
+  readonly closed = output<void>();
+
+  close(): void {
+    this.closed.emit()
+  }
+}

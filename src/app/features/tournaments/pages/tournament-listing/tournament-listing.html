@@ -4,7 +4,7 @@
         <app-button
             icon="plus"
             variant="primary"
-            (clicked)="toggleCreationModal(true)">
+            (clicked)="openCreateModal()">
                 Add
         </app-button>
     </div>
@@ -19,35 +19,31 @@
                 {{tournament.name}}    
             </button>
 
-            @let status = getStatus(tournament);
-
-            <app-tag [variant]="getStatusVariant(status)">
-                {{ getStatusLabel(status) }}
+            <app-tag [variant]="statusConfig[tournament.status].variant">
+                {{ statusConfig[tournament.status].label }}
             </app-tag>
-            <span class="thumbnail-delete">
-                <button (click)="deleteTournament(tournament.id)" class="button -error -small">
-                    Delete
-                </button>
-            </span>
+            <app-button
+                icon="trash"
+                variant="danger"
+                iconOnly
+                (clicked)="deleteTournament(tournament.id)"></app-button>
         </div>
     }
 
 </div>
-@if (showCreationModal) {
-    <app-modal>
-        <form [formGroup]="tournamentCreationForm" (ngSubmit)="addTournament()">
-            <label for="name">Tournament name: </label>
-            <input id="name" type="text" formControlName="name" required/>
-            <button type="submit" [disabled]="!tournamentCreationForm.valid" class="button -primary -small">Submit</button>
-        </form>
 
-    </app-modal>
-    <div class="modal creation-modal" >
-        <button (click)="toggleCreationModal(false)">
-            X
-        </button>
-        
-    </div>
-}
+<app-modal
+    [open]="isModalOpen()"
+    title="Create new tournament"
+    (closed)="closeModal()">
+
+    <app-tournament-form
+        (submitted)="createTournament($event)"
+        (cancelled)="closeModal()"
+    />
+
+</app-modal>
+
+
 
 

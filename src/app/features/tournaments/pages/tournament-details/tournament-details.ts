@@ -1,6 +1,6 @@
 import { Component, computed, inject, input, output } from '@angular/core';
 import { TournamentService } from '../../services/tournament';
-import { TournamentModel } from '../../models/tournament-model';
+import { TournamentModel } from '../../models/tournament.model';
 
 @Component({
   selector: 'app-tournament-details',

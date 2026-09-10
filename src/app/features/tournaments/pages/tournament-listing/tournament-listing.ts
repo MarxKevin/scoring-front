@@ -1,37 +1,28 @@
 import { Component, inject, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TournamentModel } from '../../models/tournament-model';
+import { TournamentModel, createTournament } from '../../models/tournament.model';
 import { TournamentService } from '../../services/tournament';
 import { Button } from '../../../../shared/components/button/button';
 import { Modal } from '../../../../shared/components/modal/modal';
 import { Tag } from '../../../../shared/components/tag/tag';
-import { getCompetitionStatus } from '../../utils/tournament-status/tournament-status';
+import { TOURNAMENT_STATUS_CONFIG } from '../../utils/tournament-status/tournament-status';
+import { TournamentForm } from '../../components/tournament-form/tournament-form'
 
 
-type TournamentStatus = 'upcoming' | 'ongoing' | 'archived';
-type TagVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-
-const COMPETITION_STATUS_VARIANT: Record<TournamentStatus, TagVariant> = {
-  ongoing: 'success',
-  upcoming: 'warning',
-  archived: 'secondary'
-};
-
-const COMPETITION_STATUS_LABEL: Record<TournamentStatus, string> = {
-  ongoing: 'En cours',
-  upcoming: 'Prochain',
-  archived: 'Archive'
-};
 
 @Component({
   selector: 'app-tournament-listing',
-  imports: [ReactiveFormsModule, Button, Modal, Tag],
+  imports: [ReactiveFormsModule, Button, Modal, Tag, TournamentForm],
   templateUrl: './tournament-listing.html',
   styleUrl: './tournament-listing.css',
 })
 export class TournamentListing {
 
-    showCreationModal: boolean = false;
+  readonly statusConfig = TOURNAMENT_STATUS_CONFIG;
+  readonly isModalOpen = signal(false);
+
+  showCreationModal: boolean = false;
+
   tournamentCreationForm = new FormGroup({
     name: new FormControl('')
   })
@@ -50,11 +41,11 @@ export class TournamentListing {
     this.tournamentsList.set(this.tournamentService.getTournaments());
   }
 
-  toggleCreationModal(isOpen: boolean){
-    this.showCreationModal = isOpen;
-  }
+  //toggleCreationModal(isOpen: boolean){
+    //this.showCreationModal = isOpen;
+  //}
 
-  addTournament(){
+  /*addTournament(){
 
     let newTournament = <TournamentModel>{
       id : this.tournamentsList().length + 1,
@@ -69,12 +60,12 @@ export class TournamentListing {
     this.getTournamentList();
   
     // Close modal
-    this.toggleCreationModal(false);
+    //this.toggleCreationModal(false);
 
     // Clear input
     this.tournamentCreationForm.get('name')?.reset()
     
-  }
+  }*/
 
   deleteTournament(id:number){
     this.tournamentService.deleteTournament(id);
@@ -85,18 +76,27 @@ export class TournamentListing {
     this.tournamentSelectedId.emit(id)
   }
 
-
-  getStatus(tournament: TournamentModel): TournamentStatus {
-    return getCompetitionStatus(tournament);
+  openCreateModal(): void {
+    this.isModalOpen.set(true);
   }
 
-  getStatusVariant(status: TournamentStatus): TagVariant {
-    return COMPETITION_STATUS_VARIANT[status];
+  closeModal(): void {
+    this.isModalOpen.set(false);
   }
 
-  getStatusLabel(status: TournamentStatus): string {
-    return COMPETITION_STATUS_LABEL[status];
-  }
+  createTournament(tournament: createTournament): void {
 
+    const newTournament: TournamentModel = {
+      id: this.tournamentsList().length + 1,
+      ...tournament
+    };
+
+    this.tournamentService.createTournament(newTournament);
+
+    this.getTournamentList();
+
+    this.isModalOpen.set(false);
+  }
 
 }
+
