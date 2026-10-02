@@ -6,6 +6,9 @@ export interface TournamentModel {
   name?: string | null;
   nations?: Nation[];
   status: TournamentStatus;
+  game: string | null;
+  startDate: Date;
+  endDate: Date | null;
 }
 
 export type createTournament = Omit<TournamentModel, 'id'>;

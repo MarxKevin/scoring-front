@@ -1,1 +1,21 @@
-<p>homepage works!</p>
+<header class="bg-blue-950 text-amber-600 px-8 py-4 flex justify-between border-b-1 border-amber-600">
+    <div class="flex flex-wrap content-center">
+        {{currentTournament()?.name}}
+    </div>
+    <div>
+        <div>
+            <span>{{currentTournament()?.startDate | date:'dd/MM/yyyy'}}</span>
+            @if(currentTournament()?.startDate !== null) {
+                <span> - {{currentTournament()?.startDate | date:'dd/MM/yyyy'}}</span>
+            }
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="">
+        <div>
+            {{currentTournament()?.name}}
+        </div>
+    </div>
+</main>

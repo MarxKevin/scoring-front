@@ -52,6 +52,71 @@
     </select>
   </div>
 
+  <!-- StartDate -->
+  <div class="space-y-2">
+    <label
+      for="name"
+      class="block text-sm font-medium text-gray-700"
+    >
+      Date de lancement
+    </label>
+
+    <input
+      id="startDate"
+      type="date"
+      formControlName="startDate"
+      placeholder="10/02/2026"
+      class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    />
+
+    @if (
+      form.controls.name.invalid &&
+      form.controls.name.touched
+    ) {
+      <p class="text-sm text-red-600">
+        La date de lancement est obligatoire.
+      </p>
+    }
+  </div>
+
+  <!-- EndDate -->
+  <div class="space-y-2">
+    <label
+      for="name"
+      class="block text-sm font-medium text-gray-700"
+    >
+      Date de fin
+    </label>
+
+    <input
+      id="endDate"
+      type="date"
+      formControlName="endDate"
+      placeholder="03/05/2026"
+      class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    />
+  </div>
+
+  <!-- Support game -->
+  <div class="space-y-2">
+    <label
+      for="name"
+      class="block text-sm font-medium text-gray-700"
+    >
+      Jeux supporté
+    </label>
+
+    <input
+      id="game"
+      type="string"
+      formControlName="game"
+      placeholder="Counter Strike"
+      class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    />
+  </div>
+
+
+
   <!-- Actions -->
   <div
     class="flex justify-end gap-3 border-t border-gray-200 pt-6"

@@ -7,6 +7,9 @@ import { TOURNAMENT_STATUS_CONFIG, TournamentStatusConfig } from '../../utils/to
 interface TournamentFormInterface {
   name: FormControl<string>;
   status: FormControl<TournamentStatus>;
+  startDate: FormControl<string>;
+  endDate: FormControl<string>;
+  game: FormControl<string>;
 }
 
 @Component({
@@ -37,6 +40,18 @@ export class TournamentForm {
     status: new FormControl<TournamentStatus>('draft', {
       nonNullable: true,
     }),
+    startDate: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    endDate: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    game: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
   });
 
   constructor() {
@@ -50,7 +65,15 @@ export class TournamentForm {
       return;
     }
 
-    this.submitted.emit(this.form.getRawValue());
+    const formValue = this.form.getRawValue()
+
+    const tournament: createTournament = {
+      ...formValue,
+      startDate: new Date(formValue.startDate),
+      endDate: new Date(formValue.endDate)
+    }
+
+    this.submitted.emit(tournament);
   }
 
   onCancel(): void {
